@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>SSE</h1>
+    <script>
+      if ('EventSource' in window) {
+        const source = new EventSource('/serve/sse')
+
+        source.addEventListener('open', (e) => {
+          console.log('SSE启动成功')
+        })
+
+        source.addEventListener('message', (e) => {
+          const data = e.data
+          console.log('服务器发来数据：', data)
+        })
+
+        source.addEventListener('error', (err) => {
+          // console.log(err, 'error')
+        })
+
+        // 10秒后关闭
+        setTimeout(() => {
+          source.close()
+        }, 10 * 1000)
+      }
+    </script>
+  </body>
+</html>

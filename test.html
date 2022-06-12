@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <br />
+    <input type="text" id="test" />
+    <script>
+      let input = document.querySelector('#input')
+      input.addEventListener(
+        'compositionstart',
+        function (e) {
+          console.log('compositionstart')
+        },
+        false
+      )
+      input.addEventListener(
+        'compositionupdate',
+        function (e) {
+          console.log('compositionupdate')
+        },
+        false
+      )
+      input.addEventListener(
+        'compositionend',
+        function (e) {
+          console.log('compositionend')
+          // 去搜索
+        },
+        false
+      )
+
+      // change事件只有敲回车，或者输入框失去焦点才会触发。
+      document.getElementById('test').addEventListener(
+        'change',
+        function (e) {
+          console.log('change: ' + e.target.value)
+        },
+        false
+      )
+
+      document.getElementById('test').addEventListener(
+        'input',
+        function (e) {
+          console.log('input: ' + e.target.value)
+        },
+        false
+      )
+    </script>
+  </body>
+</html>

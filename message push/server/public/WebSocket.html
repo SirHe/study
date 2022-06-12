@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>WebSocket</h1>
+
+    <script>
+      const ws = new WebSocket('ws://localhost:3000/serve/websocket')
+
+      ws.send('我是客户端发送的数据')
+
+      ws.onopen = function (event) {
+        //开始通信时的处理
+        console.log('通信创建成功')
+      }
+
+      ws.onmessage = function (event) {
+        console.log('服务器发来数据：', event.data)
+      }
+
+      ws.onclose = function (event) {
+        //关闭时的处理操作
+        console.log('连接关闭')
+      }
+
+      setTimeout(() => {
+        ws.close()
+      }, 10 * 1000)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "csrf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.1"
+  }
+}
